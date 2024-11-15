@@ -3,8 +3,8 @@ const { status, signup, signin, signout } = require('../../controllers/auth.cont
 const authMw = require('../../mws/auth.mw');
 const authRouter = Router();
 
-authRouter.head('/status', authMw, status);
-authRouter.get('/signout', authMw, signout);
+authRouter.head('/status', authMw(), status);
+authRouter.get('/signout', authMw(), signout);
 authRouter.post('/signup', signup);
 authRouter.post('/signin', signin);
 
