@@ -8,12 +8,11 @@ function validateToken(token) {
       audience: process.env.JWT_AUDIENCE.split(','),
       issuer: process.env.JWT_ISSUER,
     });
-    console.log(blacklist);
     const userId = decodedToken.user;
     if (blacklist.has(userId) && blacklist.get(userId).has(token)) return null;
     return decodedToken;
   } catch (error) {
-    return null;
+    throw new Error('Invalid token');
   }
 }
 
